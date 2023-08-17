@@ -36,3 +36,78 @@
     transform: rotate(360deg);
   }
 }
+
+.container{
+  margin-top: 2rem;
+}
+.input-div{
+  margin-bottom: 2rem;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+input {
+  box-sizing: border-box;
+  border-radius: 5px;
+  height: 2rem;
+  border: 2px solid #313235; /* Specify border style and width */
+}
+
+
+button{
+  margin : 0.5rem;
+  box-sizing: border-box;
+  border-radius: 5px;
+  height: 2rem;
+  border: 2px solid #313235;
+  color: white;
+  background-color: #282c34;
+}
+.table-container{
+  display: flex;
+  justify-content: center;
+}
+.hourly-table {
+  border-collapse: collapse;
+  width: 80%;
+}
+
+.hourly-table th, .hourly-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center; /* Align text to the center */
+}
+
+.hourly-table th {
+  background-color: #f2f2f2;
+}
+.daily-forecast {
+  margin-top: 20px;
+}
+
+.table-container {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.daily-table {
+  width: 80%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.daily-table th,
+.daily-table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
+}
+
+.daily-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.daily-table td {
+  vertical-align: middle;
+}
