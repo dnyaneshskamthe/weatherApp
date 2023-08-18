@@ -40,9 +40,25 @@
   }
 }
 
+:root {
+  --background-color-light: #ffffff;
+  --text-color-light: #333333;
+  --background-color-dark: #1a1a1a;
+  --text-color-dark: #ffffff;
+}
+
 /* Container styling */
 .app-wrapper {
   margin-top: 2rem;
+}
+.app-container {
+  background-color: var(--background-color-light);
+  color: var(--text-color-light);
+}
+
+.dark-theme {
+  background-color: var(--background-color-dark);
+  color: var(--text-color-dark);
 }
 
 /* Input styling */
@@ -76,6 +92,10 @@ button {
   font-size: medium;
   font-weight: bold;
   font-style: italic;
+}
+.theme-button{
+  margin: 1rem 0.2rem 0 0.2rem;
+  height: 2rem;
 }
 
 .table-container {

@@ -9,11 +9,16 @@ export const Home = () => {
   const [dailyForecast, setDailyForecast] = useState([]);
   const [showHourlyforecast, setShowHourlyForecast] = useState(false)
   const [showDailyForecast, setShowDailyForecast] = useState(false)
-
+  const [isDarkMode, setIsDarkMode] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [cityName, setCityName] = useState("");
   const api_key = `${process.env.REACT_APP_WEATHER_API_KEY}`;
   let lat, lon;
+
+ 
+  const toggleTheme = () => {
+    setIsDarkMode(!isDarkMode);
+  };
 
   const fetchUserLocation = async () => {
     return new Promise((resolve, reject) => {
@@ -61,13 +66,11 @@ export const Home = () => {
 
   const handleFetchCurrentWeather = async (event) => {
     event.preventDefault();
-    console.log("called");
     if (cityName) {
       try {
         const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${api_key}`);
         if (response.ok) {
           const data = await response.json();
-          console.log(data);
           lat = data.coord.lat;
           lon = data.coord.lon;
           const response2 = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${api_key}`);
@@ -97,7 +100,6 @@ export const Home = () => {
     setShowDailyForecast(true)
   }
   useEffect(() => {
-    console.log(cityName);
     if (isLoading) {
       getLocation();
     }
@@ -115,7 +117,8 @@ export const Home = () => {
   }, [weatherData, isLoading]);
 
   return (
-    <div>
+    <div className={`app-container ${isDarkMode ? 'dark-theme' : 'light-theme'}`}>
+      <button className ='theme-button' onClick={toggleTheme}>Toggle Theme</button>
       {isLoading ? (
         <p>Requesting access to your location...</p>
       ) : weatherData ? (

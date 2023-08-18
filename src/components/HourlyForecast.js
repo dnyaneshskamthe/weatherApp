@@ -8,7 +8,6 @@ const HourlyForecast = (props) => {
     const [currentPage, setCurrentPage] = useState(1);
 
     useEffect(() => {
-        console.log('called');
         setHourlyForecast(props.hourlyData)
     }, [props.hourlyData]);
 

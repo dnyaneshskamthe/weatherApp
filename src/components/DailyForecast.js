@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import moment from 'moment';
 
 const DailyForecast = (props) => {
-    console.log(props);
     const [dailyForecast, setDailyForecast] = useState(props.dailyData);
 
     useEffect(() => {
