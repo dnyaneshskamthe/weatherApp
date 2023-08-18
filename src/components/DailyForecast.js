@@ -2,11 +2,23 @@ import React, { useState, useEffect } from 'react';
 import moment from 'moment';
 
 const DailyForecast = (props) => {
-    const [dailyForecast, setDailyForecast] = useState(props.dailyForecastData);
+    console.log(props);
+    const [dailyForecast, setDailyForecast] = useState(props.dailyData);
+    const [currentPage, setCurrentPage] = useState(1);
+    const entriesPerPage = 6; // Number of entries to display per page
 
     useEffect(() => {
-        setDailyForecast(props.dailyForecastData);
-    }, [props.dailyForecastData]);
+        setDailyForecast(props.dailyData);
+        setCurrentPage(1); // Reset the current page when data changes
+    }, [props.dailyData]);
+
+    const totalPages = Math.ceil(dailyForecast.length / entriesPerPage);
+
+    // Calculate the start and end index for the current page
+    const startIndex = (currentPage - 1) * entriesPerPage;
+    const endIndex = startIndex + entriesPerPage;
+
+    const currentData = dailyForecast.slice(startIndex, endIndex);
 
     return (
         <div className="daily-forecast">
@@ -23,7 +35,7 @@ const DailyForecast = (props) => {
                             </tr>
                         </thead>
                         <tbody>
-                            {dailyForecast.map((day) => (
+                            {currentData.map((day) => (
                                 <tr key={day.dt}>
                                     <td>{moment.unix(day.dt).format('MMM D')}</td>
                                     <td>
@@ -37,6 +49,19 @@ const DailyForecast = (props) => {
                     </table>
                 ) : (
                     <p>No data available for daily forecast.</p>
+                )}
+                {totalPages > 1 && (
+                    <div className="pagination">
+                        {Array.from({ length: totalPages }, (_, index) => (
+                            <button
+                                key={index}
+                                onClick={() => setCurrentPage(index + 1)}
+                                className={currentPage === index + 1 ? 'active' : ''}
+                            >
+                                {index + 1}
+                            </button>
+                        ))}
+                    </div>
                 )}
             </div>
         </div>

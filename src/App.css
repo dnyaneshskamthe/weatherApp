@@ -1,7 +1,10 @@
+/* General styling */
 .App {
   text-align: center;
+  font-family: 'Arial', sans-serif; /* Specify your preferred font family */
 }
 
+/* Header styling */
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -37,57 +40,79 @@
   }
 }
 
-.container{
+/* Container styling */
+.container {
   margin-top: 2rem;
 }
-.input-div{
-  margin-bottom: 2rem;
+
+/* Input styling */
+.input-div {
   box-sizing: border-box;
   border-radius: 10px;
+  width: 100%;
+  background-color: #353030;
+  padding: 20px;
+  margin: 1rem;
+  overflow-x: auto;
 }
+
 input {
+  width: 80%;
   box-sizing: border-box;
   border-radius: 5px;
-  height: 2rem;
-  border: 2px solid #313235; /* Specify border style and width */
+  height: 3rem;
+  border: 2px solid #313235;
 }
 
-
-button{
-  margin : 0.5rem;
+/* Button styling */
+button {
+  margin: 0.5rem;
   box-sizing: border-box;
   border-radius: 5px;
-  height: 2rem;
+  height: 3rem;
   border: 2px solid #313235;
   color: white;
   background-color: #282c34;
-}
-.table-container{
-  display: flex;
-  justify-content: center;
-}
-.hourly-table {
-  border-collapse: collapse;
-  width: 80%;
-}
-
-.hourly-table th, .hourly-table td {
-  border: 1px solid #ddd;
-  padding: 8px;
-  text-align: center; /* Align text to the center */
-}
-
-.hourly-table th {
-  background-color: #f2f2f2;
-}
-.daily-forecast {
-  margin-top: 20px;
+  font-size: medium;
+  font-weight: bold;
+  font-style: italic;
 }
 
 .table-container {
+  display: flex;
+  justify-content: center;
   border: 1px solid #ccc;
   border-radius: 5px;
   padding: 10px;
+  overflow-x: auto; 
+}
+
+.hourly-table {
+   border-collapse: collapse;
+  width: 90%; /* Set the width to 100% */
+  max-width: 100%;
+
+}
+
+.hourly-table th,
+.hourly-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+  font-size: 14px; 
+  color: white;
+}
+
+.hourly-table th {
+  background-color: #1d1b1b;
+}
+
+.hourly-forecast,.daily-forecast {
+  @media (max-width: 768px) {
+    /* Adjust layout for smaller screens */
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .daily-table {
@@ -110,4 +135,103 @@ button{
 
 .daily-table td {
   vertical-align: middle;
+}
+
+/* Weather card styling */
+.weather-card {
+  background-color: #353030;
+  color: #fff;
+  padding: 1.5rem;
+  border-radius: 10px;
+  margin: 1rem;
+  font-family: 'Arial', sans-serif;
+  width: 100%;
+  max-width: 600px; /* Limit card width for larger screens */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.weather-card h1 {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.weather-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  @media (max-width: 768px) {
+    /* Adjust gap for smaller screens */
+    gap: 5px;
+  }
+}
+
+.weather-detail-card {
+  background-color: #333;
+  border: 1px solid #555;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  flex: 1; /* Distribute available space equally */
+  max-width: 200px; 
+  @media (max-width: 768px) {
+    /* Adjust card width for smaller screens */
+    width: 100%;
+  }
+}
+
+.weather-detail {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.weather-value {
+  color: #fff;
+}
+
+/* Individual weather detail cards */
+.temperature-card {
+  background-color: #eb6530;
+  border: 1px solid #ff6347;
+  color: #fff;
+}
+
+.humidity-card {
+  background-color: #4169e1;
+  border: 1px solid #4169e1;
+  color: #fff;
+}
+
+.pressure-card {
+  background-color: #32cd32;
+  border: 1px solid #32cd32;
+  color: #fff;
+}
+
+.weather-description-card {
+  background-color: #8a2be2;
+  border: 1px solid #8a2be2;
+  color: #fff;
+}
+
+.wind-speed-card {
+  background-color: #f4a460;
+  border: 1px solid #f4a460;
+  color: #fff;
+}
+
+/* Container for weather information */
+.weather-container {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  height: 80vh; /* Set to full viewport height */
+}
+
+@media (max-width: 506px) {
+  .weather-detail-card {
+    max-width: 150px; /* Further reduce card width */
+    font-size: 10px; /* Reduce font size */
+  }
+  .weather-card h1 {
+    font-size: 24px; /* Adjust the font size of h1 for smaller screens */
+  }
 }
