@@ -2,13 +2,15 @@ import React, { useEffect, useState } from 'react';
 import moment from 'moment';
 
 const HourlyForecast = (props) => {
-    const hourlyForecast = props.hourlyData;
+    console.log('hr',props);
+    const [hourlyForecast,setHourlyForecast] = useState(props.hourlyData);
     const entriesPerPage = 6;
     const [currentPage, setCurrentPage] = useState(1);
 
     useEffect(() => {
-        // No need to update state here
-    }, [props.hourlyForecastData]);
+        console.log('called');
+        setHourlyForecast(props.hourlyData)
+    }, [props.hourlyData]);
 
     const totalPages = Math.ceil(hourlyForecast.length / entriesPerPage);
     const startIndex = (currentPage - 1) * entriesPerPage;
